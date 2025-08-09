@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skill Tree UI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ÜST RADIAL (puan + kaydırma) -->
+  <div class="top-panel">
+    <button id="btnUp" class="ra-small"><span class="ra-small-text">↑</span></button>
+    <div class="ra-center"><span id="skillPoints" class="ra-center-text">90</span></div>
+    <button id="btnDown" class="ra-small"><span class="ra-small-text">↓</span></button>
+  </div>
+
+  <!-- Sabit çerçeve -->
+  <div class="frame"><img src="img/base.png" alt="UI Frame"></div>
+
+  <!-- Görünüm alanı (1920×1080), pan edilebilir katman -->
+  <div id="viewport">
+    <div id="pan">
+      <canvas id="skill-lines"></canvas>
+      <div class="skill-tree" id="skillTree"></div>
+    </div>
+  </div>
+
+  <!-- ALT BUTONLAR -->
+  <div class="button-panel-bottom">
+    <button id="btnReset" class="ui-button"><span class="ui-text">reset</span></button>
+    <button id="btnAccept" class="ui-button"><span class="ui-text">accept</span></button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

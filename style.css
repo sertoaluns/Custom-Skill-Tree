@@ -1,0 +1,128 @@
+/* Hogwarts font (WOFF) */
+@font-face{
+  font-family:'Hogwarts';
+  src:url('fonts/Hogwarts.woff') format('woff');
+  font-weight:normal;
+  font-style:normal;
+  font-display:swap;
+}
+
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0}
+body{
+  background:url("img/background.png") no-repeat center center fixed;
+  background-size:cover;
+  user-select:none;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow:hidden;
+  font-family:'Hogwarts',sans-serif;
+}
+
+/* Sabit çerçeve */
+.frame{position:fixed;inset:0;pointer-events:none;z-index:50}
+.frame img{width:100%;height:100%;object-fit:fill}
+
+/* Görünüm ve pan sahnesi */
+#viewport{
+  position:fixed;left:50%;top:0;
+  width:1920px;height:1080px;
+  transform:translateX(-50%);
+  overflow:hidden;z-index:10;
+}
+#pan{position:absolute;left:0;top:0;width:1920px;height:1080px;will-change:transform}
+#skill-lines{position:absolute;left:0;top:0;width:1920px;height:1080px}
+.skill-tree{position:absolute;left:0;top:0;width:1920px;height:1080px}
+
+/* Skill-NODE: tek div içinde önce ikon (arkada), sonra border (önde) */
+.skill{
+  position:absolute;
+  z-index:20;
+  cursor:pointer;
+  transition: transform .18s ease;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+.skill img{position:absolute;inset:0;display:block;pointer-events:none}
+
+/* İkon – arkada kalır */
+.skill img.skill-icon{
+  z-index:1;
+  width:82%;height:82%;
+  left:9%;top:9%;
+  object-fit:contain;
+  filter:grayscale(100%) brightness(0.45);
+  transition:transform .2s ease, filter .2s ease;
+}
+.skill.active img.skill-icon{filter:none}
+
+
+/* Hover'da border + ikon birlikte büyüsün */
+.skill:hover{
+  transform: scale(1.08);
+}
+/* İkonun kendi transform'u olmasın; ölçeği konteynerden alsın */
+.skill:hover .skill-icon{
+  transform: none;
+}
+
+/**  .skill:hover img.skill-icon.active{transform:scale(1.08)}
+/**  .skill:hover img.skill-icon:not(.active){transform:scale(0.92)}
+
+/* Border – önde */
+.skill img.skill-border{
+  z-index:2;
+  width:100%;height:100%;object-fit:contain;
+}
+
+/* Üst radial panel */
+.top-panel{
+  position:fixed;left:50%;top:24px;transform:translateX(-50%);
+  display:flex;align-items:center;gap:18px;z-index:60;
+}
+.ra-small{
+  width:50px;
+  height:50px;
+  border:none;
+  cursor:pointer;
+  background:url('img/radial_red.png') no-repeat center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;color:#fff;
+  font-family:'Hogwarts',sans-serif;
+  font-size:24px;
+}
+.ra-small:focus{outline:none}
+.ra-center{
+  width:120px;height:120px;background:url('img/radial_red.png') no-repeat center/cover;
+  display:flex;align-items:center;justify-content:center;
+}
+.ra-small-text{
+  color: #fff;
+  transform: translateY(-15%);
+}
+.ra-center-text{
+  font-family:'Hogwarts',serif;
+  font-size:56px;line-height:1;color:#fff;letter-spacing:1px;
+  text-shadow:0 2px 2px rgba(0,0,0,.5);transform:translateY(-15%)
+}
+
+/* Alt butonlar */
+.button-panel-bottom{
+  position:fixed;left:50%;bottom:54px;transform:translateX(-50%);
+  display:flex;gap:10px;z-index:60;
+}
+.ui-button{
+  width:133px;height:40px;border:none;cursor:pointer;
+  background:url('img/button1.png') no-repeat center/cover;
+  display:flex;align-items:center;justify-content:center;
+}
+.ui-button:focus{outline:none}
+.ui-text{
+  font-family:'Hogwarts',serif;font-size:26px;line-height:1;color:#fff;background:transparent;border:0;
+  letter-spacing:.5px;text-shadow:0 2px 2px rgba(0,0,0,.45);transform:translateY(-3px)
+}
+
+/* Focus/Select highlight kapatmaları */
+button,img{outline:none}
+img{-webkit-user-drag:none;user-select:none}
