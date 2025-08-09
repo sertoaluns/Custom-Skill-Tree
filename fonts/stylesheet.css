@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Hogwarts';
+    src: url('Hogwarts.woff2') format('woff2'),
+        url('Hogwarts.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
